@@ -1,7 +1,9 @@
 from django.contrib import admin
-from .models import Student, BehaviorLog
+from .models import School, Teacher, Student, BehaviorLog  
 
-# Register models here
+# Register your models here
+admin.site.register(School)  
+admin.site.register(Teacher)
 admin.site.register(Student)
 admin.site.register(BehaviorLog)
 

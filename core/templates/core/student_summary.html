@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Summary</title>
 </head>
 
@@ -22,9 +24,13 @@
     </form>
 
     <!-- Display Behavior Logs -->
+    <h2>Behavior Logs</h2>
     <ul>
         {% for log in logs %}
-        <li>{{ log.student.name }} - {{ log.behavior_status }} ({{ log.date }}) - {{ log.note }}</li>
+        <li>
+            <strong>{{ log.student.name }}</strong>: {{ log.behavior_status }} 
+            ({{ log.date }}) - {{ log.note }}
+        </li>
         {% empty %}
         <li>No behavior logs available.</li>
         {% endfor %}
