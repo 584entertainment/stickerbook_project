@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Student Summary</title>
+</head>
+
+<body>
+    <h1>Student Behavior Summary</h1>
+
+    <!-- Filter Form -->
+    <form method="get">
+        <label for="student">Select a student:</label>
+        <select name="student" id="student" onchange="this.form.submit()">
+            <option value="">-- All Students --</option>
+            {% for student in students %}
+            <option value="{{ student.id }}" {% if student.id|stringformat:"s" == selected_student %}selected{% endif %}>
+                {{ student.name }}
+            </option>
+            {% endfor %}
+        </select>
+    </form>
+
+    <!-- Display Behavior Logs -->
+    <ul>
+        {% for log in logs %}
+        <li>{{ log.student.name }} - {{ log.behavior_status }} ({{ log.date }}) - {{ log.note }}</li>
+        {% empty %}
+        <li>No behavior logs available.</li>
+        {% endfor %}
+    </ul>
+
+    <p><a href="{% url 'home' %}">Back to Home</a></p>
+</body>
+
+</html>

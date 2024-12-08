@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Log Behavior</title>
+</head>
+
+<body>
+    <h1>Log Student Behavior</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+
+    <h2>All Students</h2>
+    <ul>
+        {% for student in students %}
+        <li>{{ student.name }} ({{ student.teacher.username }})</li>
+        {% endfor %}
+    </ul>
+
+    <p><a href="{% url 'home' %}">Back to Home</a></p>
+</body>
+
+</html>
